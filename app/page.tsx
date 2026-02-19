@@ -478,7 +478,7 @@ function SectionHeader({ children }: { children: React.ReactNode }) {
    MAIN COMPONENT
 ============================================================ */
 export default function Resume() {
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState<"en" | "ru">("en");
   const t = T[lang];
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
