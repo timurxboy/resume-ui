@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import {
   Mail, Phone, MapPin, Github, ChevronDown, ChevronRight,
@@ -331,7 +331,7 @@ const T = {
 /* ============================================================
    ARCH DIAGRAM
 ============================================================ */
-function ArchDiagram({ nodes }) {
+function ArchDiagram({ nodes }: { nodes: { label: string; icon: string; color: string }[] }) {
   return (
     <div className="flex flex-wrap items-center gap-2 my-6">
       {nodes.map((n, i) => (
@@ -354,7 +354,7 @@ function ArchDiagram({ nodes }) {
 /* ============================================================
    PROJECT CARD
 ============================================================ */
-function ProjectCard({ project }) {
+function ProjectCard({ project }: { project: any }) {
   const [open, setOpen] = useState(false);
   return (
     <motion.div
@@ -405,7 +405,7 @@ function ProjectCard({ project }) {
 /* ============================================================
    EXPERIENCE CARD
 ============================================================ */
-function ExperienceCard({ exp }) {
+function ExperienceCard({ exp }: { exp: any }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative pl-8">
@@ -454,7 +454,7 @@ function ExperienceCard({ exp }) {
 /* ============================================================
    STACK BADGE
 ============================================================ */
-function StackBadge({ name }) {
+function StackBadge({ name }: { name: string }) {
   return (
     <span className="px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-zinc-800 text-zinc-300 border border-zinc-700 hover:border-indigo-500 hover:text-indigo-300 transition-colors cursor-default">
       {name}
@@ -465,7 +465,7 @@ function StackBadge({ name }) {
 /* ============================================================
    SECTION HEADER
 ============================================================ */
-function SectionHeader({ children }) {
+function SectionHeader({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-4 mb-8">
       <h2 className="text-2xl font-bold text-white">{children}</h2>
