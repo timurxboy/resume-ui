@@ -18,7 +18,7 @@ const T = {
     contact: "Contact",
     skills: "Technical Stack",
     experience: "Experience",
-    projects: "Key Projects",
+    projectsLabel: "Key Projects",
     metrics: "Impact Metrics",
     career: "Career Timeline",
     present: "Present",
@@ -594,7 +594,7 @@ export default function Resume() {
 
         {/* ── PROJECTS ── */}
         <section>
-          <SectionHeader>{lang === "ru" ? t.projectsLabel : "Key Projects"}</SectionHeader>
+          <SectionHeader>{t.projectsLabel}</SectionHeader>
           <div className="space-y-4">
             {projects.map((p, i) => (
               <motion.div
