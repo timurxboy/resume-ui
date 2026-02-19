@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import {
   Mail, Phone, MapPin, Github, ChevronDown, ChevronRight,
-  Server, Database, Cpu, Cloud, GitBranch, Zap, Shield, BarChart3,
-  ArrowRight, Circle, CheckCircle2, Globe
+  ArrowRight, CheckCircle2, Globe, Sun, Moon,
 } from "lucide-react";
 
 /* ============================================================
@@ -15,13 +14,10 @@ const T = {
   en: {
     role: "Backend & Edge AI Engineer",
     tagline: "Designing and delivering real-time systems — from embedded edge devices and computer vision pipelines to scalable backend services and production infrastructure.",
-    contact: "Contact",
     skills: "Technical Stack",
     experience: "Experience",
     projectsLabel: "Key Projects",
     metrics: "Impact Metrics",
-    career: "Career Timeline",
-    present: "Present",
     toggle: "RU",
     metricsData: [
       { value: "3–5×", label: "Faster time-series queries", sub: "PostgreSQL time-based partitioning" },
@@ -35,12 +31,12 @@ const T = {
         company: "DriveLens AI",
         desc: "End-to-end distributed system for real-time traffic violation detection using edge cameras.",
         arch: [
-          { label: "Edge Device\n(Jetson / RPi)", icon: "cpu", color: "#6366f1" },
-          { label: "MQTT Broker\n(Batched)", icon: "zap", color: "#8b5cf6" },
-          { label: "Kafka\nPipeline", icon: "git", color: "#a855f7" },
-          { label: "FastAPI\nBackend", icon: "server", color: "#d946ef" },
-          { label: "PostgreSQL\n+ S3", icon: "db", color: "#ec4899" },
-          { label: "Notification\nLayer", icon: "shield", color: "#f43f5e" },
+          { label: "Edge Device\n(Jetson / RPi)", color: "#6366f1" },
+          { label: "MQTT Broker\n(Batched)", color: "#8b5cf6" },
+          { label: "Kafka\nPipeline", color: "#a855f7" },
+          { label: "FastAPI\nBackend", color: "#d946ef" },
+          { label: "PostgreSQL\n+ S3", color: "#ec4899" },
+          { label: "Notification\nLayer", color: "#f43f5e" },
         ],
         bullets: [
           "Real-time RTSP stream processing with optimised inference on NVIDIA Jetson & Raspberry Pi",
@@ -56,12 +52,12 @@ const T = {
         company: "DriveLens AI",
         desc: "Geofencing service that detects vehicle entry into parking zones and triggers plate recognition.",
         arch: [
-          { label: "GPS\nTelemetry", icon: "cpu", color: "#0ea5e9" },
-          { label: "MQTT\nIngestion", icon: "zap", color: "#06b6d4" },
-          { label: "Geofence\nService", icon: "shield", color: "#10b981" },
-          { label: "Camera\nTrigger", icon: "cpu", color: "#84cc16" },
-          { label: "Plate\nRecognition", icon: "git", color: "#f59e0b" },
-          { label: "Notification\n+ Storage", icon: "db", color: "#ef4444" },
+          { label: "GPS\nTelemetry", color: "#0ea5e9" },
+          { label: "MQTT\nIngestion", color: "#06b6d4" },
+          { label: "Geofence\nService", color: "#10b981" },
+          { label: "Camera\nTrigger", color: "#84cc16" },
+          { label: "Plate\nRecognition", color: "#f59e0b" },
+          { label: "Notification\n+ Storage", color: "#ef4444" },
         ],
         bullets: [
           "Real-time GPS coordinate monitoring and parking zone boundary detection",
@@ -76,11 +72,11 @@ const T = {
         company: "DriveLens AI",
         desc: "Scalable time-series storage layer for continuous high-frequency GPS and telemetry ingestion.",
         arch: [
-          { label: "Vehicle\nDevices", icon: "cpu", color: "#6366f1" },
-          { label: "MQTT\nBroker", icon: "zap", color: "#8b5cf6" },
-          { label: "Ingestion\nService", icon: "server", color: "#a855f7" },
-          { label: "Partitioned\nPostgreSQL", icon: "db", color: "#d946ef" },
-          { label: "Auto\nCleanup", icon: "shield", color: "#ec4899" },
+          { label: "Vehicle\nDevices", color: "#6366f1" },
+          { label: "MQTT\nBroker", color: "#8b5cf6" },
+          { label: "Ingestion\nService", color: "#a855f7" },
+          { label: "Partitioned\nPostgreSQL", color: "#d946ef" },
+          { label: "Auto\nCleanup", color: "#ec4899" },
         ],
         bullets: [
           "Automatic monthly partition creation for time-series GPS data",
@@ -172,13 +168,10 @@ const T = {
   ru: {
     role: "Backend & Edge AI Инженер",
     tagline: "Проектирую и реализую системы реального времени — от встраиваемых устройств и конвейеров компьютерного зрения до масштабируемых бэкенд-сервисов и продакшн-инфраструктуры.",
-    contact: "Контакты",
     skills: "Технический стек",
     experience: "Опыт работы",
     projectsLabel: "Ключевые проекты",
     metrics: "Результаты в цифрах",
-    career: "Карьерный путь",
-    present: "Наст. вр.",
     toggle: "EN",
     metricsData: [
       { value: "3–5×", label: "Ускорение time-series запросов", sub: "Партиционирование PostgreSQL по времени" },
@@ -192,12 +185,12 @@ const T = {
         company: "DriveLens AI",
         desc: "Распределённая система реального времени для обнаружения нарушений ПДД с помощью граничных камер.",
         arch: [
-          { label: "Edge-устройство\n(Jetson / RPi)", icon: "cpu", color: "#6366f1" },
-          { label: "MQTT Брокер\n(Батчинг)", icon: "zap", color: "#8b5cf6" },
-          { label: "Kafka\nПайплайн", icon: "git", color: "#a855f7" },
-          { label: "FastAPI\nБэкенд", icon: "server", color: "#d946ef" },
-          { label: "PostgreSQL\n+ S3", icon: "db", color: "#ec4899" },
-          { label: "Уведомления", icon: "shield", color: "#f43f5e" },
+          { label: "Edge-устройство\n(Jetson / RPi)", color: "#6366f1" },
+          { label: "MQTT Брокер\n(Батчинг)", color: "#8b5cf6" },
+          { label: "Kafka\nПайплайн", color: "#a855f7" },
+          { label: "FastAPI\nБэкенд", color: "#d946ef" },
+          { label: "PostgreSQL\n+ S3", color: "#ec4899" },
+          { label: "Уведомления", color: "#f43f5e" },
         ],
         bullets: [
           "Обработка RTSP-потоков в реальном времени с оптимизированным инференсом на NVIDIA Jetson и Raspberry Pi",
@@ -213,12 +206,12 @@ const T = {
         company: "DriveLens AI",
         desc: "Геофенсинг-сервис, определяющий въезд транспорта в парковочные зоны и запускающий распознавание номеров.",
         arch: [
-          { label: "GPS\nТелеметрия", icon: "cpu", color: "#0ea5e9" },
-          { label: "MQTT\nИнгестия", icon: "zap", color: "#06b6d4" },
-          { label: "Геофенсинг\nСервис", icon: "shield", color: "#10b981" },
-          { label: "Активация\nКамеры", icon: "cpu", color: "#84cc16" },
-          { label: "Распознавание\nНомеров", icon: "git", color: "#f59e0b" },
-          { label: "Уведомления\n+ Хранение", icon: "db", color: "#ef4444" },
+          { label: "GPS\nТелеметрия", color: "#0ea5e9" },
+          { label: "MQTT\nИнгестия", color: "#06b6d4" },
+          { label: "Геофенсинг\nСервис", color: "#10b981" },
+          { label: "Активация\nКамеры", color: "#84cc16" },
+          { label: "Распознавание\nНомеров", color: "#f59e0b" },
+          { label: "Уведомления\n+ Хранение", color: "#ef4444" },
         ],
         bullets: [
           "Мониторинг GPS-координат и детекция границ парковочных зон в реальном времени",
@@ -233,11 +226,11 @@ const T = {
         company: "DriveLens AI",
         desc: "Масштабируемый слой хранения time-series данных для непрерывной высокочастотной ингестии GPS и телеметрии.",
         arch: [
-          { label: "Устройства\nТС", icon: "cpu", color: "#6366f1" },
-          { label: "MQTT\nБрокер", icon: "zap", color: "#8b5cf6" },
-          { label: "Сервис\nИнгестии", icon: "server", color: "#a855f7" },
-          { label: "Партиционированный\nPostgreSQL", icon: "db", color: "#d946ef" },
-          { label: "Авто\nОчистка", icon: "shield", color: "#ec4899" },
+          { label: "Устройства\nТС", color: "#6366f1" },
+          { label: "MQTT\nБрокер", color: "#8b5cf6" },
+          { label: "Сервис\nИнгестии", color: "#a855f7" },
+          { label: "Партиционированный\nPostgreSQL", color: "#d946ef" },
+          { label: "Авто\nОчистка", color: "#ec4899" },
         ],
         bullets: [
           "Автоматическое создание месячных партиций для time-series GPS-данных",
@@ -329,21 +322,70 @@ const T = {
 };
 
 /* ============================================================
+   THEME TOKENS
+============================================================ */
+type Theme = {
+  pageBg: string; pageText: string;
+  cardBg: string; cardBorder: string;
+  subText: string; mutedText: string;
+  badgeBg: string; badgeText: string; badgeBorder: string;
+  dotBorder: string; timelineLine: string;
+  navBg: string; navBorder: string; navText: string;
+  divider: string;
+  metricBg: string; metricBorder: string;
+  metricValue: string; metricLabel: string; metricSub: string;
+  glowColor: string; gridColor: string;
+  accent: string; accentLight: string;
+};
+
+function getTheme(isDark: boolean): Theme {
+  return isDark ? {
+    pageBg: "#0a0a0f", pageText: "#f4f4f5",
+    cardBg: "rgba(18,18,28,0.8)", cardBorder: "#27272a",
+    subText: "#a1a1aa", mutedText: "#52525b",
+    badgeBg: "#18182a", badgeText: "#c4c4d4", badgeBorder: "#3a3a5c",
+    dotBorder: "#0a0a0f", timelineLine: "#6366f1",
+    navBg: "rgba(14,14,20,0.95)", navBorder: "#27272a", navText: "#d4d4d8",
+    divider: "rgba(99,102,241,0.35)",
+    metricBg: "rgba(18,18,28,0.8)", metricBorder: "#27272a",
+    metricValue: "#818cf8", metricLabel: "#f4f4f5", metricSub: "#71717a",
+    glowColor: "rgba(99,102,241,0.07)", gridColor: "#6366f1",
+    accent: "#6366f1", accentLight: "#818cf8",
+  } : {
+    pageBg: "#fafafa", pageText: "#111118",
+    cardBg: "rgba(255,255,255,0.95)", cardBorder: "#e4e4f0",
+    subText: "#52525b", mutedText: "#a1a1aa",
+    badgeBg: "#ede9fe", badgeText: "#5b21b6", badgeBorder: "#c4b5fd",
+    dotBorder: "#fafafa", timelineLine: "#a5b4fc",
+    navBg: "rgba(255,255,255,0.95)", navBorder: "#e4e4f0", navText: "#3f3f46",
+    divider: "rgba(124,58,237,0.2)",
+    metricBg: "rgba(237,233,254,0.7)", metricBorder: "#ddd6fe",
+    metricValue: "#7c3aed", metricLabel: "#111118", metricSub: "#7c6ea0",
+    glowColor: "rgba(124,58,237,0.05)", gridColor: "#7c3aed",
+    accent: "#7c3aed", accentLight: "#7c3aed",
+  };
+}
+
+/* ============================================================
    ARCH DIAGRAM
 ============================================================ */
-function ArchDiagram({ nodes }: { nodes: { label: string; icon: string; color: string }[] }) {
+function ArchDiagram({ nodes, isDark }: { nodes: { label: string; color: string }[]; isDark: boolean }) {
   return (
-    <div className="flex flex-wrap items-center gap-2 my-6">
-      {nodes.map((n: { label: string; icon: string; color: string }, i: number) => (
+    <div className="flex flex-wrap items-center gap-2 my-5">
+      {nodes.map((n: { label: string; color: string }, i: number) => (
         <div key={i} className="flex items-center gap-2">
           <div
-            className="rounded-xl px-3 py-2 text-xs font-mono font-semibold text-white text-center whitespace-pre-line leading-tight"
-            style={{ background: n.color + "22", border: `1px solid ${n.color}55`, color: n.color }}
+            className="rounded-xl px-3 py-2 text-xs font-mono font-semibold text-center whitespace-pre-line leading-tight"
+            style={{
+              background: n.color + (isDark ? "18" : "16"),
+              border: `1px solid ${n.color}${isDark ? "44" : "66"}`,
+              color: n.color,
+            }}
           >
             {n.label}
           </div>
           {i < nodes.length - 1 && (
-            <ArrowRight size={14} className="text-zinc-600 flex-shrink-0" />
+            <ArrowRight size={13} style={{ color: isDark ? "#3f3f6e" : "#c4b5fd" }} className="flex-shrink-0" />
           )}
         </div>
       ))}
@@ -354,25 +396,26 @@ function ArchDiagram({ nodes }: { nodes: { label: string; icon: string; color: s
 /* ============================================================
    PROJECT CARD
 ============================================================ */
-function ProjectCard({ project }: { project: any }) {
+function ProjectCard({ project, isDark, th }: { project: any; isDark: boolean; th: Theme }) {
   const [open, setOpen] = useState(false);
   return (
-    <motion.div
-      layout
-      className="border border-zinc-800 rounded-2xl bg-zinc-900/50 backdrop-blur overflow-hidden"
+    <div
+      className="rounded-2xl overflow-hidden"
+      style={{ background: th.cardBg, border: `1px solid ${th.cardBorder}`, backdropFilter: "blur(12px)" }}
     >
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex justify-between items-start p-6 text-left gap-4"
       >
         <div>
-          <div className="text-xs font-mono text-indigo-400 mb-1">{project.company}</div>
-          <h3 className="text-lg font-semibold text-white">{project.title}</h3>
-          <p className="text-sm text-zinc-500 mt-1">{project.desc}</p>
+          <div className="text-xs font-mono mb-1" style={{ color: th.accentLight }}>{project.company}</div>
+          <h3 className="text-base font-semibold" style={{ color: th.pageText }}>{project.title}</h3>
+          <p className="text-sm mt-1" style={{ color: th.subText }}>{project.desc}</p>
         </div>
         <ChevronDown
-          size={18}
-          className={`text-zinc-500 flex-shrink-0 mt-1 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          size={17}
+          className="flex-shrink-0 mt-1 transition-transform duration-300"
+          style={{ color: th.mutedText, transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
         />
       </button>
       <AnimatePresence>
@@ -381,15 +424,15 @@ function ProjectCard({ project }: { project: any }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.28 }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6 border-t border-zinc-800 pt-4">
-              <ArchDiagram nodes={project.arch} />
-              <ul className="space-y-2 mt-4">
+            <div className="px-6 pb-6 pt-4" style={{ borderTop: `1px solid ${th.cardBorder}` }}>
+              <ArchDiagram nodes={project.arch} isDark={isDark} />
+              <ul className="space-y-2 mt-2">
                 {project.bullets.map((b: string, i: number) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-zinc-400">
-                    <CheckCircle2 size={14} className="text-indigo-400 flex-shrink-0 mt-0.5" />
+                  <li key={i} className="flex items-start gap-2 text-sm" style={{ color: th.subText }}>
+                    <CheckCircle2 size={13} className="flex-shrink-0 mt-0.5" style={{ color: th.accentLight }} />
                     {b}
                   </li>
                 ))}
@@ -398,32 +441,38 @@ function ProjectCard({ project }: { project: any }) {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
 
 /* ============================================================
    EXPERIENCE CARD
 ============================================================ */
-function ExperienceCard({ exp }: { exp: any }) {
+function ExperienceCard({ exp, th }: { exp: any; th: Theme }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative pl-8">
-      {/* Timeline dot */}
-      <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-indigo-500 border-2 border-black" />
-      <div className="border border-zinc-800 rounded-2xl bg-zinc-900/50 overflow-hidden">
+      <div
+        className="absolute left-0 top-[18px] w-3 h-3 rounded-full"
+        style={{ background: th.accent, border: `2.5px solid ${th.dotBorder}`, boxShadow: `0 0 0 2px ${th.accent}44` }}
+      />
+      <div
+        className="rounded-2xl overflow-hidden"
+        style={{ background: th.cardBg, border: `1px solid ${th.cardBorder}`, backdropFilter: "blur(12px)" }}
+      >
         <button
           onClick={() => setOpen(!open)}
           className="w-full flex justify-between items-center p-5 text-left"
         >
           <div>
-            <div className="text-xs font-mono text-indigo-400">{exp.period}</div>
-            <h3 className="text-base font-semibold text-white mt-0.5">{exp.company}</h3>
-            <p className="text-sm text-zinc-500">{exp.role}</p>
+            <div className="text-xs font-mono" style={{ color: th.accentLight }}>{exp.period}</div>
+            <h3 className="text-sm font-bold mt-0.5" style={{ color: th.pageText }}>{exp.company}</h3>
+            <p className="text-sm" style={{ color: th.subText }}>{exp.role}</p>
           </div>
           <ChevronDown
-            size={16}
-            className={`text-zinc-500 flex-shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+            size={15}
+            className="flex-shrink-0 transition-transform duration-300"
+            style={{ color: th.mutedText, transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
           />
         </button>
         <AnimatePresence>
@@ -432,13 +481,16 @@ function ExperienceCard({ exp }: { exp: any }) {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.22 }}
               className="overflow-hidden"
             >
-              <ul className="px-5 pb-5 border-t border-zinc-800 pt-4 space-y-2">
+              <ul
+                className="px-5 pb-5 pt-4 space-y-2"
+                style={{ borderTop: `1px solid ${th.cardBorder}` }}
+              >
                 {exp.bullets.map((b: string, i: number) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-zinc-400">
-                    <ChevronRight size={14} className="text-indigo-400 flex-shrink-0 mt-0.5" />
+                  <li key={i} className="flex items-start gap-2 text-sm" style={{ color: th.subText }}>
+                    <ChevronRight size={13} className="flex-shrink-0 mt-0.5" style={{ color: th.accentLight }} />
                     {b}
                   </li>
                 ))}
@@ -454,9 +506,12 @@ function ExperienceCard({ exp }: { exp: any }) {
 /* ============================================================
    STACK BADGE
 ============================================================ */
-function StackBadge({ name }: { name: string }) {
+function StackBadge({ name, th }: { name: string; th: Theme }) {
   return (
-    <span className="px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-zinc-800 text-zinc-300 border border-zinc-700 hover:border-indigo-500 hover:text-indigo-300 transition-colors cursor-default">
+    <span
+      className="px-3 py-1.5 rounded-lg text-xs font-mono font-semibold cursor-default"
+      style={{ background: th.badgeBg, color: th.badgeText, border: `1px solid ${th.badgeBorder}` }}
+    >
       {name}
     </span>
   );
@@ -465,53 +520,75 @@ function StackBadge({ name }: { name: string }) {
 /* ============================================================
    SECTION HEADER
 ============================================================ */
-function SectionHeader({ children }: { children: React.ReactNode }) {
+function SectionHeader({ children, th }: { children: React.ReactNode; th: Theme }) {
   return (
     <div className="flex items-center gap-4 mb-8">
-      <h2 className="text-2xl font-bold text-white">{children}</h2>
-      <div className="flex-1 h-px bg-gradient-to-r from-indigo-500/40 to-transparent" />
+      <h2 className="text-xl font-bold whitespace-nowrap" style={{ color: th.pageText }}>{children}</h2>
+      <div
+        className="flex-1 h-px"
+        style={{ background: `linear-gradient(to right, ${th.divider}, transparent)` }}
+      />
     </div>
   );
 }
 
 /* ============================================================
-   MAIN COMPONENT
+   MAIN
 ============================================================ */
 export default function Resume() {
   const [lang, setLang] = useState<"en" | "ru">("en");
+  const [isDark, setIsDark] = useState(true);
+
   const t = T[lang];
+  const th = getTheme(isDark);
+
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
-  const stackCategories = t.stack || T.en.stack;
-  const projects = t.projects || T.en.projects;
-  const experiences = t.experiences || T.en.experiences;
-
   return (
-    <div className="relative min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden font-sans">
+    <div
+      className="relative min-h-screen overflow-x-hidden font-sans transition-colors duration-500"
+      style={{ background: th.pageBg, color: th.pageText }}
+    >
       {/* Scroll progress */}
       <motion.div
         style={{ scaleX: progress }}
         className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 origin-left z-50"
       />
 
-      {/* Subtle grid background */}
+      {/* Grid */}
       <div
-        className="fixed inset-0 -z-10 opacity-[0.03]"
+        className="fixed inset-0 -z-10"
         style={{
-          backgroundImage:
-            "linear-gradient(#6366f1 1px, transparent 1px), linear-gradient(90deg, #6366f1 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
+          backgroundImage: `linear-gradient(${th.gridColor}12 1px, transparent 1px), linear-gradient(90deg, ${th.gridColor}12 1px, transparent 1px)`,
+          backgroundSize: "44px 44px",
         }}
       />
-      {/* Glow */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-600/10 blur-[120px] -z-10 rounded-full" />
 
-      {/* Lang toggle */}
-      <div className="fixed top-4 right-4 z-50">
+      {/* Glow */}
+      <div
+        className="fixed -z-10 rounded-full"
+        style={{
+          top: -60, left: "50%", transform: "translateX(-50%)",
+          width: 700, height: 400,
+          background: th.glowColor,
+          filter: "blur(90px)",
+        }}
+      />
+
+      {/* Controls */}
+      <div className="fixed top-4 right-4 z-50 flex gap-2">
+        <button
+          onClick={() => setIsDark(!isDark)}
+          className="flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200"
+          style={{ background: th.navBg, border: `1px solid ${th.navBorder}`, color: th.navText }}
+        >
+          {isDark ? <Sun size={15} /> : <Moon size={15} />}
+        </button>
         <button
           onClick={() => setLang(lang === "en" ? "ru" : "en")}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-700 text-sm font-mono font-semibold text-zinc-300 hover:border-indigo-500 hover:text-indigo-300 transition-all"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-mono font-semibold transition-all duration-200"
+          style={{ background: th.navBg, border: `1px solid ${th.navBorder}`, color: th.navText }}
         >
           <Globe size={14} />
           {t.toggle}
@@ -520,112 +597,128 @@ export default function Resume() {
 
       <main className="max-w-4xl mx-auto px-5 py-20 space-y-20">
 
-        {/* ── HERO ── */}
+        {/* HERO */}
         <motion.section
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-block text-xs font-mono text-indigo-400 border border-indigo-500/30 bg-indigo-500/10 rounded-full px-3 py-1 mb-6">
+          <div
+            className="inline-block text-xs font-mono rounded-full px-3 py-1 mb-6"
+            style={{ color: th.accentLight, border: `1px solid ${th.accent}44`, background: `${th.accent}10` }}
+          >
             {t.role}
           </div>
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-none mb-6">
-            Temurbek<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-none mb-6">
+            <span style={{ color: th.pageText }}>Temurbek</span>
+            <br />
+            <span
+              className="text-transparent bg-clip-text"
+              style={{
+                backgroundImage: isDark
+                  ? "linear-gradient(to right, #818cf8, #a78bfa)"
+                  : "linear-gradient(to right, #6d28d9, #9333ea)"
+              }}
+            >
               Rakhimkuliev
             </span>
           </h1>
-          <p className="text-zinc-400 text-base max-w-2xl leading-relaxed mb-8">
+          <p className="text-base max-w-2xl leading-relaxed mb-8" style={{ color: th.subText }}>
             {t.tagline}
           </p>
-          <div className="flex flex-wrap gap-4 text-sm text-zinc-400">
-            <a href="tel:+998946257395" className="flex items-center gap-2 hover:text-white transition-colors">
-              <Phone size={14} className="text-indigo-400" /> +998-94-625-7395
+          <div className="flex flex-wrap gap-5 text-sm" style={{ color: th.subText }}>
+            <a href="tel:+998946257395" className="flex items-center gap-2 hover:opacity-70 transition-opacity">
+              <Phone size={14} style={{ color: th.accentLight }} /> +998-94-625-7395
             </a>
-            <a href="mailto:timurxboy@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
-              <Mail size={14} className="text-indigo-400" /> timurxboy@gmail.com
+            <a href="mailto:timurxboy@gmail.com" className="flex items-center gap-2 hover:opacity-70 transition-opacity">
+              <Mail size={14} style={{ color: th.accentLight }} /> timurxboy@gmail.com
+            </a>
+            <a href="https://github.com/timurxboy" className="flex items-center gap-2 hover:opacity-70 transition-opacity">
+              <Github size={14} style={{ color: th.accentLight }} /> @timurxboy
             </a>
             <span className="flex items-center gap-2">
-              <Github size={14} className="text-indigo-400" /> @timurxboy
-            </span>
-            <span className="flex items-center gap-2">
-              <MapPin size={14} className="text-indigo-400" /> Tashkent, Uzbekistan
+              <MapPin size={14} style={{ color: th.accentLight }} /> Tashkent, Uzbekistan
             </span>
           </div>
         </motion.section>
 
-        {/* ── METRICS ── */}
+        {/* METRICS */}
         <section>
-          <SectionHeader>{t.metrics}</SectionHeader>
+          <SectionHeader th={th}>{t.metrics}</SectionHeader>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {(t.metricsData || T.en.metricsData).map((m: { value: string; label: string; sub: string }, i: number) => (
+            {t.metricsData.map((m: { value: string; label: string; sub: string }, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="border border-zinc-800 rounded-2xl p-5 bg-zinc-900/50"
+                transition={{ delay: i * 0.08 }}
+                className="rounded-2xl p-5"
+                style={{ background: th.metricBg, border: `1px solid ${th.metricBorder}` }}
               >
-                <div className="text-3xl font-extrabold text-indigo-400 font-mono">{m.value}</div>
-                <p className="text-sm text-white font-medium mt-2">{m.label}</p>
-                <p className="text-xs text-zinc-500 mt-1">{m.sub}</p>
+                <div className="text-3xl font-extrabold font-mono" style={{ color: th.metricValue }}>
+                  {m.value}
+                </div>
+                <p className="text-sm font-semibold mt-2 leading-snug" style={{ color: th.metricLabel }}>{m.label}</p>
+                <p className="text-xs mt-1 leading-snug" style={{ color: th.metricSub }}>{m.sub}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* ── TECHNICAL STACK ── */}
+        {/* STACK */}
         <section>
-          <SectionHeader>{t.skills}</SectionHeader>
+          <SectionHeader th={th}>{t.skills}</SectionHeader>
           <div className="space-y-6">
-            {Object.entries(stackCategories).map(([cat, items]: [string, string[]]) => (
+            {Object.entries(t.stack).map(([cat, items]: [string, string[]]) => (
               <div key={cat}>
-                <div className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">{cat}</div>
+                <div className="text-xs font-mono uppercase tracking-widest mb-3" style={{ color: th.mutedText }}>
+                  {cat}
+                </div>
                 <div className="flex flex-wrap gap-2">
-                  {items.map((s: string) => (
-                    <StackBadge key={s} name={s} />
-                  ))}
+                  {items.map((s: string) => <StackBadge key={s} name={s} th={th} />)}
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* ── PROJECTS ── */}
+        {/* PROJECTS */}
         <section>
-          <SectionHeader>{t.projectsLabel}</SectionHeader>
+          <SectionHeader th={th}>{t.projectsLabel}</SectionHeader>
           <div className="space-y-4">
-            {projects.map((p: any, i: number) => (
+            {t.projects.map((p: any, i: number) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.08 }}
               >
-                <ProjectCard project={p} />
+                <ProjectCard project={p} isDark={isDark} th={th} />
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* ── EXPERIENCE ── */}
+        {/* EXPERIENCE */}
         <section>
-          <SectionHeader>{t.experience}</SectionHeader>
-          {/* Career timeline line */}
+          <SectionHeader th={th}>{t.experience}</SectionHeader>
           <div className="relative">
-            <div className="absolute left-[5px] top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500 via-purple-500/40 to-transparent" />
+            <div
+              className="absolute left-[5px] top-0 bottom-0 w-px"
+              style={{ background: `linear-gradient(to bottom, ${th.timelineLine}, transparent)` }}
+            />
             <div className="space-y-5">
-              {experiences.map((exp: any, i: number) => (
+              {t.experiences.map((exp: any, i: number) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -16 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ delay: i * 0.07 }}
                 >
-                  <ExperienceCard exp={exp} />
+                  <ExperienceCard exp={exp} th={th} />
                 </motion.div>
               ))}
             </div>
@@ -633,9 +726,10 @@ export default function Resume() {
         </section>
 
         {/* FOOTER */}
-        <footer className="text-center text-xs text-zinc-700 pt-10 pb-4 font-mono">
+        <footer className="text-center text-xs pt-10 pb-4 font-mono" style={{ color: th.mutedText }}>
           © {new Date().getFullYear()} Temurbek Rakhimkuliev · timurxboy@gmail.com
         </footer>
+
       </main>
     </div>
   );
