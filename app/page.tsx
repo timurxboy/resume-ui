@@ -334,7 +334,7 @@ const T = {
 function ArchDiagram({ nodes }: { nodes: { label: string; icon: string; color: string }[] }) {
   return (
     <div className="flex flex-wrap items-center gap-2 my-6">
-      {nodes.map((n, i) => (
+      {nodes.map((n: { label: string; icon: string; color: string }, i: number) => (
         <div key={i} className="flex items-center gap-2">
           <div
             className="rounded-xl px-3 py-2 text-xs font-mono font-semibold text-white text-center whitespace-pre-line leading-tight"
@@ -387,7 +387,7 @@ function ProjectCard({ project }: { project: any }) {
             <div className="px-6 pb-6 border-t border-zinc-800 pt-4">
               <ArchDiagram nodes={project.arch} />
               <ul className="space-y-2 mt-4">
-                {project.bullets.map((b, i) => (
+                {project.bullets.map((b: string, i: number) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-zinc-400">
                     <CheckCircle2 size={14} className="text-indigo-400 flex-shrink-0 mt-0.5" />
                     {b}
@@ -436,7 +436,7 @@ function ExperienceCard({ exp }: { exp: any }) {
               className="overflow-hidden"
             >
               <ul className="px-5 pb-5 border-t border-zinc-800 pt-4 space-y-2">
-                {exp.bullets.map((b, i) => (
+                {exp.bullets.map((b: string, i: number) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-zinc-400">
                     <ChevronRight size={14} className="text-indigo-400 flex-shrink-0 mt-0.5" />
                     {b}
@@ -558,7 +558,7 @@ export default function Resume() {
         <section>
           <SectionHeader>{t.metrics}</SectionHeader>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {(t.metricsData || T.en.metricsData).map((m, i) => (
+            {(t.metricsData || T.en.metricsData).map((m: { value: string; label: string; sub: string }, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -579,11 +579,11 @@ export default function Resume() {
         <section>
           <SectionHeader>{t.skills}</SectionHeader>
           <div className="space-y-6">
-            {Object.entries(stackCategories).map(([cat, items]) => (
+            {Object.entries(stackCategories).map(([cat, items]: [string, string[]]) => (
               <div key={cat}>
                 <div className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">{cat}</div>
                 <div className="flex flex-wrap gap-2">
-                  {items.map((s) => (
+                  {items.map((s: string) => (
                     <StackBadge key={s} name={s} />
                   ))}
                 </div>
@@ -596,7 +596,7 @@ export default function Resume() {
         <section>
           <SectionHeader>{t.projectsLabel}</SectionHeader>
           <div className="space-y-4">
-            {projects.map((p, i) => (
+            {projects.map((p: any, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -20 }}
@@ -617,7 +617,7 @@ export default function Resume() {
           <div className="relative">
             <div className="absolute left-[5px] top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500 via-purple-500/40 to-transparent" />
             <div className="space-y-5">
-              {experiences.map((exp, i) => (
+              {experiences.map((exp: any, i: number) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
