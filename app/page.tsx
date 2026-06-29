@@ -86,6 +86,26 @@ const T = {
           "Stable performance under continuous high-frequency inserts",
         ],
       },
+      {
+        title: "Gated Community Access Control System",
+        company: "DriveLens AI",
+        desc: "Telegram-bot + IoT backend for barrier/gate access control with automatic number-plate recognition (ANPR).",
+        arch: [
+          { label: "Telegram Bot\n(Aiogram 3)", color: "#0ea5e9" },
+          { label: "FastAPI\nBackend", color: "#6366f1" },
+          { label: "MQTT\n(aiomqtt)", color: "#8b5cf6" },
+          { label: "IoT Devices\n(Barriers / ANPR)", color: "#d946ef" },
+          { label: "PostgreSQL", color: "#ec4899" },
+        ],
+        bullets: [
+          "Backend for barrier/gate access control with ANPR: residents open the gate via a Telegram bot, while on-device cameras open the barrier automatically against a number-plate whitelist",
+          "Bidirectional MQTT communication with IoT devices (aiomqtt): server pushes plate whitelists, devices report recognition events, diagnostics and heartbeats (online/offline via LWT)",
+          "Role-based model (admin / owner / client): owners manage locations and invite residents via one-time deep-link invites, approving or revoking access",
+          "APScheduler background jobs: safety-net device synchronisation and cleanup of expired invites",
+          "Clean layered architecture (models / repository / service / handlers), async SQLAlchemy 2.0 + Alembic, SQLAdmin admin panel, JWT auth, QR codes for guest access",
+          "Production-ready: Docker, pre-commit (ruff + mypy strict), full type coverage",
+        ],
+      },
     ],
     experiences: [
       {
@@ -238,6 +258,26 @@ const T = {
           "Автоматическое управление жизненным циклом партиций — ноль ручного обслуживания БД",
           "Интегрированный MQTT-пайплайн для стриминга телеметрии в реальном времени",
           "Стабильная производительность при непрерывной высокочастотной записи",
+        ],
+      },
+      {
+        title: "Система контроля доступа на территорию",
+        company: "DriveLens AI",
+        desc: "Telegram-бот + IoT-бэкенд для управления шлагбаумами с автоматическим распознаванием автономеров (ANPR).",
+        arch: [
+          { label: "Telegram-бот\n(Aiogram 3)", color: "#0ea5e9" },
+          { label: "FastAPI\nБэкенд", color: "#6366f1" },
+          { label: "MQTT\n(aiomqtt)", color: "#8b5cf6" },
+          { label: "IoT-устройства\n(Шлагбаумы / ANPR)", color: "#d946ef" },
+          { label: "PostgreSQL", color: "#ec4899" },
+        ],
+        bullets: [
+          "Backend для управления шлагбаумами с распознаванием автономеров (ANPR): жители открывают въезд через Telegram-бота, камеры на устройствах открывают шлагбаум автоматически по белому списку номеров",
+          "Двусторонний обмен с IoT-устройствами по MQTT (aiomqtt): сервер пушит белые списки номеров, устройства шлют события распознавания, диагностику и heartbeat (online/offline через LWT)",
+          "Ролевая модель admin / owner / client: владельцы управляют локациями, приглашают жителей по одноразовым deep-link инвайтам, подтверждают и отзывают доступ",
+          "APScheduler для фоновых задач: safety-net синхронизация устройств и очистка просроченных инвайтов",
+          "Чистая слоистая архитектура (models / repository / service / handlers), async SQLAlchemy 2.0 + Alembic, SQLAdmin для админ-панели, JWT-авторизация, QR-коды для гостевого доступа",
+          "Production-ready: Docker, pre-commit (ruff + mypy strict), строгая типизация",
         ],
       },
     ],
